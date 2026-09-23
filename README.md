@@ -9,6 +9,10 @@ The project currently includes:
 
 Both examples demonstrate how to load data, prepare features, split data into training and test sets, train a model, and compare predictions with known values.
 
+## Why I created this repository
+
+I created this repository while preparing to work more closely with my company's data team. I wanted to learn some of the terminology used in machine learning and understand how the different pieces fit together in practice. I completed the 40-hour Udemy course **Machine Learning A-Z Python** and used this repository to reinforce the concepts with small, runnable examples. I am not an ML expert, but I now have a better understanding of how the basic components connect, and I hope these notes and examples can help others who are starting their own learning journey.
+
 ## Set up the uv project
 
 Install Python 3.10 or newer and [uv](https://docs.astral.sh/uv/). From this project directory, initialize the project once:
