@@ -1,6 +1,6 @@
 # Multiple Linear Regression: Beginner Walkthrough
 
-This project is a small machine-learning example that trains a **multiple linear regression** model. The model uses several startup expenses and a company's `Location` to predict `Profit` from a CSV file.
+Multiple linear regression uses several input features to predict one target, making it a useful next step for showing how real-world data with multiple factors can be modeled in this demo.
 
 The project demonstrates a complete beginner-friendly workflow:
 

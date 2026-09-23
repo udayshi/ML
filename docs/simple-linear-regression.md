@@ -1,6 +1,6 @@
 # Simple Linear Regression: Beginner Walkthrough
 
-This project is a small machine-learning example that trains a **simple linear regression** model. The model uses `ExperienceYears` to predict `Salary` from a CSV file.
+Simple linear regression uses one input feature to predict one target, making it a clear starting point for understanding the basic machine-learning workflow in this demo.
 
 The project demonstrates a complete beginner-friendly workflow:
 
