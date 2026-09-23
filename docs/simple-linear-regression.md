@@ -11,12 +11,13 @@ The project demonstrates a complete beginner-friendly workflow:
 5. Train a scikit-learn linear regression model.
 6. Compare real salaries with predicted salaries.
 
-## What you need
+## Install the packages
 
-Install:
+After initializing the uv project from the main [README](../README.md), install the packages used by this example:
 
-- Python 3.10 or newer
-- [uv](https://docs.astral.sh/uv/), a fast Python project and package manager
+```bash
+uv add scikit-learn numpy pandas matplotlib
+```
 
 The code uses these Python packages:
 
@@ -25,28 +26,13 @@ The code uses these Python packages:
 - `pandas` — reading and creating CSV data.
 - `matplotlib` — included by the regression script for plotting support, although this version does not currently display a plot.
 
-## 1. Create the project environment
-
-From this project directory, initialize a uv project and install the dependencies:
-
-```bash
-uv init
-uv add scikit-learn numpy pandas matplotlib
-```
-
-If `uv init` asks whether to overwrite an existing project file, keep the existing files and only add the dependencies. You can also install the packages into an existing environment with:
-
-```bash
-uv pip install scikit-learn numpy pandas matplotlib
-```
-
 Although the Python import is named `sklearn`, the package you install is named `scikit-learn`:
 
 ```python
 from sklearn.linear_model import LinearRegression
 ```
 
-## 2. Generate the CSV dataset
+## 1. Generate the CSV dataset
 
 Run the dataset generator:
 
@@ -64,7 +50,7 @@ ExperienceYears,Salary
 
 The values are randomly generated each time the script runs. Therefore, the exact rows and model results will change from run to run.
 
-## 3. Run the linear regression example
+## 2. Run the linear regression example
 
 After creating the CSV file, run:
 

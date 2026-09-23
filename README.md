@@ -1,51 +1,58 @@
-# Simple Linear Regression
+# Machine Learning Regression Examples
 
-This project is a small machine-learning example that trains a **simple linear regression** model. The model uses `ExperienceYears` to predict `Salary` from a CSV file.
+This project contains small, beginner-friendly examples of regression with Python and scikit-learn. The examples use CSV files, pandas, NumPy, and `uv` so that each step of the machine-learning workflow is easy to inspect.
 
-It demonstrates a complete beginner-friendly workflow:
+The project currently includes:
 
-1. Install the Python dependencies.
-2. Generate a CSV dataset.
-3. Load the dataset with pandas.
-4. Split the data into training and test sets.
-5. Train a scikit-learn linear regression model.
-6. Compare real salaries with predicted salaries.
+- **Simple linear regression** — predicts `Salary` from one input, `ExperienceYears`.
+- **Multiple linear regression** — predicts `Profit` from several numeric inputs and a categorical `Location` value.
 
-## Quick start
+Both examples demonstrate how to load data, prepare features, split data into training and test sets, train a model, and compare predictions with known values.
 
-From the project directory, install the dependencies with [uv](https://docs.astral.sh/uv/):
+## Set up the uv project
+
+Install Python 3.10 or newer and [uv](https://docs.astral.sh/uv/). From this project directory, initialize the project once:
 
 ```bash
 uv init
-uv add scikit-learn numpy pandas matplotlib
 ```
 
-Generate the sample dataset and run the regression example:
+The package installation command belongs to each individual walkthrough because each document lists the dependencies needed by its example. Open the relevant guide below and follow its installation step before running the script.
+
+## Choose a walkthrough
+
+- [Simple linear regression](docs/simple-linear-regression.md) — use `ExperienceYears` to predict `Salary`.
+- [Multiple linear regression](docs/multiple-linear-regression.md) — use administration, research, and marketing expenses plus location to predict startup profit.
+
+## Run the examples
+
+The dataset generator creates the CSV files used by both examples:
 
 ```bash
 uv run dummy_csv.py
-uv run simple-linear-regression.py
 ```
 
-The first command creates `data/salary.csv`. The second command trains the model and prints actual salaries, predicted salaries, differences, and the model score.
+Then run either model:
 
-## Documentation
+```bash
+uv run simple-linear-regression.py
+uv run multiple-linear-regression.py
+```
 
-For the full beginner walkthrough, including setup details, explanations, limitations, common problems, and suggested next steps, see:
-
-**[Read the complete simple linear regression walkthrough](docs/simple-linear-regression.md)**
+The generator currently writes random values, so the exact predictions and scores can change between runs. The data is intended for learning the workflow, not for real business or salary predictions.
 
 ## Project files
 
 ```text
 .
 ├── data/
-│   └── salary.csv                 # Generated input data
+│   ├── salary.csv                    # Input data for simple regression
+│   └── startup.csv                   # Input data for multiple regression
 ├── docs/
-│   └── simple-linear-regression.md # Detailed walkthrough
-├── dummy_csv.py                   # Creates the sample CSV
-├── simple-linear-regression.py    # Trains and evaluates the model
-└── README.md                      # Project overview
+│   ├── simple-linear-regression.md   # Simple regression walkthrough
+│   └── multiple-linear-regression.md # Multiple regression walkthrough
+├── dummy_csv.py                      # Creates both sample CSV files
+├── simple-linear-regression.py       # One-feature regression example
+├── multiple-linear-regression.py     # Multi-feature regression example
+└── README.md                         # Project overview and navigation
 ```
-
-> Note: The sample generator creates `ExperienceYears` and `Salary` independently using random values. This makes the project useful for learning the machine-learning workflow, but the resulting model should not be used for real salary predictions.
