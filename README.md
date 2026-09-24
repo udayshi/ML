@@ -13,7 +13,7 @@ These examples demonstrate how to load data, prepare features, split data into t
 
 ## Why I created this repository
 
-I created this repository while preparing to work more closely with my company's data team. I wanted to learn some of the terminology used in machine learning and understand how the different pieces fit together in practice. I completed the 40-hour Udemy course **Machine Learning A-Z Python** and used this repository to reinforce the concepts with small, runnable examples. I am not an ML expert, but I now have a better understanding of how the basic components connect, and I hope these notes and examples can help others getting started with machine learning.
+I created this repository while preparing to work more closely with my company's data team. Even though I consider myself an AI expert and am programming-language agnostic, I am not an ML expert. I wanted to learn some of the terminology used in machine learning and understand how the different pieces fit together in practice. I completed the 40-hour Udemy course **Machine Learning A-Z Python** and used this repository to reinforce the concepts with small, runnable examples. I now have a better understanding of how the basic components connect, and I hope these notes and examples can help others getting started with machine learning.
 
 ## Set up the uv project
 
