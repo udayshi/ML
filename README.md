@@ -7,6 +7,7 @@ The project currently includes:
 - **Simple linear regression** — predicts `Salary` from one input, `ExperienceYears`.
 - **Multiple linear regression** — predicts `Profit` from several numeric inputs and a categorical `Location` value.
 - **Artificial neural network** — predicts the binary `isActive` value from customer account features.
+- **PyTorch artificial neural network** — runs the same binary classification workflow using PyTorch.
 - **Convolutional neural network** — classifies images using labeled folders and TensorFlow.
 
 These examples demonstrate how to load data, prepare features, split data into training and test sets, train a model, and evaluate or inspect predictions.
@@ -30,6 +31,7 @@ The package installation command belongs to each individual walkthrough because 
 - [Simple linear regression](docs/simple-linear-regression.md) — use `ExperienceYears` to predict `Salary`.
 - [Multiple linear regression](docs/multiple-linear-regression.md) — use administration, research, and marketing expenses plus location to predict startup profit.
 - [Artificial neural network](docs/ann.md) — encode customer features and train a TensorFlow/Keras binary classifier.
+- [PyTorch ANN](docs/ann-torch.md) — build and load the equivalent binary classifier with PyTorch.
 - [Convolutional neural network](docs/CNN.md) — train and use an image classifier with TensorFlow/Keras.
 
 ## Run the examples
@@ -40,20 +42,22 @@ The dataset generator creates each missing CSV file used by the examples:
 uv run dummy_csv.py
 ```
 
-It creates `data/salary.csv`, `data/startup.csv`, and `data/ann.csv` only when those files do not already exist. See the [ANN walkthrough](docs/ann.md) for the TensorFlow dependency, model-building command, and model-loading command.
+It creates `data/salary.csv`, `data/startup.csv`, and `data/ann.csv` only when those files do not already exist. See the [TensorFlow ANN guide](docs/ann.md) or [PyTorch ANN guide](docs/ann-torch.md) for the framework-specific dependencies and commands.
 
-Then run the desired example (run `ann_build.py` before `ann_load.py`, or `cnn_build.py` before `cnn_load.py`):
+Then run the desired example (run each build script before its matching load script):
 
 ```bash
 uv run simple-linear-regression.py
 uv run multiple-linear-regression.py
 uv run ann_build.py
 uv run ann_load.py
+uv run ann_build_torch.py
+uv run ann_load_torch.py
 uv run cnn_build.py
 uv run cnn_load.py
 ```
 
-The generator writes random values when a file is first created, so the exact predictions and scores can vary. The ANN example saves its model to `models/ann.keras`. The data and models are intended for learning the workflow, not for real business, salary, or customer decisions.
+The generator writes random values when a file is first created, so the exact predictions and scores can vary. The TensorFlow ANN saves its model to `models/ann.keras`, and the PyTorch ANN saves its checkpoint to `models/ann_torch.pt`. The data and models are intended for learning the workflow, not for real business, salary, or customer decisions.
 
 ## Project files
 
@@ -67,15 +71,19 @@ The generator writes random values when a file is first created, so the exact pr
 │   ├── simple-linear-regression.md   # Simple regression walkthrough
 │   ├── multiple-linear-regression.md # Multiple regression walkthrough
 │   ├── ann.md                        # ANN walkthrough
+│   ├── ann-torch.md                  # PyTorch ANN guide
 │   └── CNN.md                        # CNN walkthrough
 ├── models/
 │   ├── ann.keras                     # Saved ANN model after training
+│   ├── ann_torch.pt                  # Saved PyTorch ANN checkpoint
 │   └── cnn-demo.model/               # Exported CNN model after training
 ├── dummy_csv.py                      # Creates missing sample CSV files
 ├── simple-linear-regression.py       # One-feature regression example
 ├── multiple-linear-regression.py     # Multi-feature regression example
 ├── ann_build.py                      # Builds and saves the ANN
 ├── ann_load.py                       # Loads the ANN and predicts
+├── ann_build_torch.py                # Builds and saves the PyTorch ANN
+├── ann_load_torch.py                 # Loads the PyTorch ANN and predicts
 ├── cnn_build.py                      # Builds and exports the CNN
 ├── cnn_load.py                       # Loads the CNN and classifies an image
 └── README.md                         # Project overview and navigation
