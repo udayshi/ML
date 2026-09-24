@@ -1,8 +1,8 @@
-# Multiple Linear Regression: Beginner Walkthrough
+# Multiple Linear Regression: Jump-Start Guide
 
 Multiple linear regression uses several input features to predict one target, making it a useful next step for showing how real-world data with multiple factors can be modeled in this demo.
 
-The project demonstrates a complete beginner-friendly workflow:
+The project demonstrates a complete jump-start workflow:
 
 1. Install the Python dependencies.
 2. Generate a CSV dataset.
@@ -40,7 +40,7 @@ From the project directory, run the dataset generator:
 uv run dummy_csv.py
 ```
 
-This creates or replaces `data/startup.csv`. The file contains 100 rows with these columns:
+This creates `data/startup.csv` only if that file does not already exist. The file contains 100 rows with these columns:
 
 ```text
 AdminExp,RnDExp,MarketingExp,Location,Profit
@@ -49,7 +49,7 @@ AdminExp,RnDExp,MarketingExp,Location,Profit
 
 The first three columns are numeric inputs. `Location` is text and contains values such as `Central London`, `North London`, `South London`, and `East London`. `Profit` is the value the model will predict.
 
-The values are randomly generated each time the script runs. Therefore, the exact rows and model results will change from run to run.
+The values are randomly generated when the file is first created. Running `dummy_csv.py` again preserves the existing file, so the rows and model results remain the same unless the CSV is replaced or regenerated.
 
 ## 2. Run the multiple linear regression example
 
@@ -128,7 +128,7 @@ The printed columns are:
 2. Real profit from the test data
 3. Difference between real and predicted profit
 
-The output is not fixed because `dummy_csv.py` generates new random data. A typical output has this shape:
+The output depends on the contents of `data/startup.csv`. A typical output has this shape:
 
 ```text
 [[ predicted_profit  real_profit  difference ]
@@ -174,11 +174,11 @@ uv add pandas
 
 ### The regression script cannot find `data/startup.csv`
 
-Run `uv run dummy_csv.py` first, and run both commands from the project directory. The generator creates the `data/startup.csv` file expected by the regression script.
+Run `uv run dummy_csv.py` first, and run both commands from the project directory. The generator creates the `data/startup.csv` file when it is missing. If the file already exists, the generator leaves it unchanged.
 
-### Results change every time
+### Results change after regeneration
 
-That is expected because the generator uses random values. To make experiments repeatable, add a seed before generating the random columns, for example:
+The initial dataset uses random values. If you delete or replace the CSV and generate it again, the results may change. To make newly generated experiments repeatable, add a seed before generating the random columns, for example:
 
 ```python
 np.random.seed(0)
@@ -190,7 +190,7 @@ np.random.seed(0)
 .
 ├── data/
 │   └── startup.csv                # Generated input data
-├── dummy_csv.py                   # Creates the startup CSV
+├── dummy_csv.py                   # Creates the startup CSV when missing
 ├── multiple-linear-regression.py  # Trains and evaluates the model
 └── README.md                      # Project overview and setup
 ```
