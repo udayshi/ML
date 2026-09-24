@@ -9,6 +9,7 @@ The project currently includes:
 - **Artificial neural network** — predicts the binary `isActive` value from customer account features.
 - **PyTorch artificial neural network** — runs the same binary classification workflow using PyTorch.
 - **Convolutional neural network** — classifies images using labeled folders and TensorFlow.
+- **PyTorch convolutional neural network** — runs the same image-classification workflow using PyTorch.
 
 These examples demonstrate how to load data, prepare features, split data into training and test sets, train a model, and evaluate or inspect predictions.
 
@@ -33,6 +34,7 @@ The package installation command belongs to each individual walkthrough because 
 - [Artificial neural network](docs/ann.md) — encode customer features and train a TensorFlow/Keras binary classifier.
 - [PyTorch ANN](docs/ann-torch.md) — build and load the equivalent binary classifier with PyTorch.
 - [Convolutional neural network](docs/CNN.md) — train and use an image classifier with TensorFlow/Keras.
+- [PyTorch CNN](docs/cnn-torch.md) — train and use the equivalent image classifier with PyTorch.
 
 ## Run the examples
 
@@ -55,9 +57,11 @@ uv run ann_build_torch.py
 uv run ann_load_torch.py
 uv run cnn_build.py
 uv run cnn_load.py
+uv run cnn_build_torch.py
+uv run cnn_load_torch.py
 ```
 
-The generator writes random values when a file is first created, so the exact predictions and scores can vary. The TensorFlow ANN saves its model to `models/ann.keras`, and the PyTorch ANN saves its checkpoint to `models/ann_torch.pt`. The data and models are intended for learning the workflow, not for real business, salary, or customer decisions.
+The generator writes random values when a file is first created, so the exact predictions and scores can vary. The TensorFlow ANN saves its model to `models/ann.keras`, the PyTorch ANN saves its checkpoint to `models/ann_torch.pt`, and the PyTorch CNN saves its checkpoint to `models/cnn-demo-torch.pt`. See the [PyTorch CNN guide](docs/cnn-torch.md) for its dependencies. The data and models are intended for learning the workflow, not for real business, salary, or customer decisions.
 
 ## Project files
 
@@ -72,11 +76,13 @@ The generator writes random values when a file is first created, so the exact pr
 │   ├── multiple-linear-regression.md # Multiple regression walkthrough
 │   ├── ann.md                        # ANN walkthrough
 │   ├── ann-torch.md                  # PyTorch ANN guide
-│   └── CNN.md                        # CNN walkthrough
+│   ├── CNN.md                        # CNN walkthrough
+│   └── cnn-torch.md                  # PyTorch CNN guide
 ├── models/
 │   ├── ann.keras                     # Saved ANN model after training
 │   ├── ann_torch.pt                  # Saved PyTorch ANN checkpoint
-│   └── cnn-demo.model/               # Exported CNN model after training
+│   ├── cnn-demo.model/               # Exported CNN model after training
+│   └── cnn-demo-torch.pt             # Saved PyTorch CNN checkpoint
 ├── dummy_csv.py                      # Creates missing sample CSV files
 ├── simple-linear-regression.py       # One-feature regression example
 ├── multiple-linear-regression.py     # Multi-feature regression example
@@ -86,5 +92,7 @@ The generator writes random values when a file is first created, so the exact pr
 ├── ann_load_torch.py                 # Loads the PyTorch ANN and predicts
 ├── cnn_build.py                      # Builds and exports the CNN
 ├── cnn_load.py                       # Loads the CNN and classifies an image
+├── cnn_build_torch.py                # Builds and saves the PyTorch CNN
+├── cnn_load_torch.py                 # Loads the PyTorch CNN and classifies an image
 └── README.md                         # Project overview and navigation
 ```
