@@ -1,8 +1,8 @@
-# Multiple Linear Regression: Beginner Walkthrough
+# Multiple Linear Regression: Jump-Start Guide
 
 Multiple linear regression uses several input features to predict one target, making it a useful next step for showing how real-world data with multiple factors can be modeled in this demo.
 
-The project demonstrates a complete beginner-friendly workflow:
+The project demonstrates a complete jump-start workflow:
 
 1. Install the Python dependencies.
 2. Generate a CSV dataset.

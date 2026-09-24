@@ -1,8 +1,8 @@
-# Simple Linear Regression: Beginner Walkthrough
+# Simple Linear Regression: Jump-Start Guide
 
 Simple linear regression uses one input feature to predict one target, making it a clear starting point for understanding the basic machine-learning workflow in this demo.
 
-The project demonstrates a complete beginner-friendly workflow:
+The project demonstrates a complete jump-start workflow:
 
 1. Install the Python dependencies.
 2. Generate a CSV dataset.
