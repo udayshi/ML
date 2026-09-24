@@ -1,6 +1,6 @@
-# Artificial Neural Network: Beginner Walkthrough
+# Artificial Neural Network: Jump-Start Guide
 
-This example uses an artificial neural network (ANN) to predict the binary `isActive` value from customer account information. It demonstrates a complete beginner-friendly workflow:
+This example uses an artificial neural network (ANN) to predict the binary `isActive` value from customer account information. It demonstrates a complete jump-start workflow:
 
 1. Install the Python dependencies.
 2. Generate a CSV dataset.
