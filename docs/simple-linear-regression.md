@@ -40,7 +40,7 @@ Run the dataset generator:
 uv run dummy_csv.py
 ```
 
-This creates or replaces `data/salary.csv`. The file contains 100 rows with two columns:
+This creates `data/salary.csv` only if that file does not already exist. The file contains 100 rows with two columns:
 
 ```text
 ExperienceYears,Salary
@@ -48,7 +48,7 @@ ExperienceYears,Salary
 5,238854
 ```
 
-The values are randomly generated each time the script runs. Therefore, the exact rows and model results will change from run to run.
+The values are randomly generated when the file is first created. Running `dummy_csv.py` again preserves the existing file, so the rows and model results remain the same unless the CSV is replaced or regenerated.
 
 ## 2. Run the linear regression example
 
@@ -83,7 +83,7 @@ regressor.fit(X_train, y_train)
 
 Finally, it predicts the salaries in the test set and prints the real value, predicted value, difference, and model score.
 
-The output is not fixed because `dummy_csv.py` generates new random data. A typical output has this shape:
+The output depends on the contents of `data/salary.csv`. A typical output has this shape:
 
 ```text
 Index   Real    Predicted       Difference      Difference %
@@ -131,11 +131,11 @@ uv add pandas
 
 ### The regression script cannot find `data/salary.csv`
 
-Run `uv run dummy_csv.py` first, and run both commands from the project directory. The generator creates the `data/salary.csv` file expected by the regression script.
+Run `uv run dummy_csv.py` first, and run both commands from the project directory. The generator creates the `data/salary.csv` file when it is missing. If the file already exists, the generator leaves it unchanged.
 
-### Results change every time
+### Results change after regeneration
 
-That is expected because the dataset uses random values. To make experiments repeatable, add a seed before generating the random columns, for example:
+The initial dataset uses random values. If you delete or replace the CSV and generate it again, the results may change. To make newly generated experiments repeatable, add a seed before generating the random columns, for example:
 
 ```python
 np.random.seed(0)
@@ -147,7 +147,7 @@ np.random.seed(0)
 .
 ├── data/
 │   └── salary.csv                 # Generated input data
-├── dummy_csv.py                   # Creates the sample CSV
+├── dummy_csv.py                   # Creates the sample CSV when missing
 ├── simple-linear-regression.py    # Trains and evaluates the model
 └── README.md                      # This walkthrough
 ```

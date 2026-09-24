@@ -6,8 +6,9 @@ The project currently includes:
 
 - **Simple linear regression** — predicts `Salary` from one input, `ExperienceYears`.
 - **Multiple linear regression** — predicts `Profit` from several numeric inputs and a categorical `Location` value.
+- **Artificial neural network** — predicts the binary `isActive` value from customer account features.
 
-Both examples demonstrate how to load data, prepare features, split data into training and test sets, train a model, and compare predictions with known values.
+These examples demonstrate how to load data, prepare features, split data into training and test sets, train a model, and evaluate or inspect predictions.
 
 ## Why I created this repository
 
@@ -27,23 +28,28 @@ The package installation command belongs to each individual walkthrough because 
 
 - [Simple linear regression](docs/simple-linear-regression.md) — use `ExperienceYears` to predict `Salary`.
 - [Multiple linear regression](docs/multiple-linear-regression.md) — use administration, research, and marketing expenses plus location to predict startup profit.
+- [Artificial neural network](docs/ann.md) — encode customer features and train a TensorFlow/Keras binary classifier.
 
 ## Run the examples
 
-The dataset generator creates the CSV files used by both examples:
+The dataset generator creates each missing CSV file used by the examples:
 
 ```bash
 uv run dummy_csv.py
 ```
 
-Then run either model:
+It creates `data/salary.csv`, `data/startup.csv`, and `data/ann.csv` only when those files do not already exist. See the [ANN walkthrough](docs/ann.md) for the TensorFlow dependency, model-building command, and model-loading command.
+
+Then run the desired example (run `ann_build.py` before `ann_load.py` for the ANN):
 
 ```bash
 uv run simple-linear-regression.py
 uv run multiple-linear-regression.py
+uv run ann_build.py
+uv run ann_load.py
 ```
 
-The generator currently writes random values, so the exact predictions and scores can change between runs. The data is intended for learning the workflow, not for real business or salary predictions.
+The generator writes random values when a file is first created, so the exact predictions and scores can vary. The ANN example saves its model to `models/ann.keras`. The data and models are intended for learning the workflow, not for real business, salary, or customer decisions.
 
 ## Project files
 
@@ -51,12 +57,18 @@ The generator currently writes random values, so the exact predictions and score
 .
 ├── data/
 │   ├── salary.csv                    # Input data for simple regression
-│   └── startup.csv                   # Input data for multiple regression
+│   ├── startup.csv                   # Input data for multiple regression
+│   └── ann.csv                       # Input data for the ANN classifier
 ├── docs/
 │   ├── simple-linear-regression.md   # Simple regression walkthrough
-│   └── multiple-linear-regression.md # Multiple regression walkthrough
-├── dummy_csv.py                      # Creates both sample CSV files
+│   ├── multiple-linear-regression.md # Multiple regression walkthrough
+│   └── ann.md                        # ANN walkthrough
+├── models/
+│   └── ann.keras                     # Saved ANN model after training
+├── dummy_csv.py                      # Creates missing sample CSV files
 ├── simple-linear-regression.py       # One-feature regression example
 ├── multiple-linear-regression.py     # Multi-feature regression example
+├── ann_build.py                      # Builds and saves the ANN
+├── ann_load.py                       # Loads the ANN and predicts
 └── README.md                         # Project overview and navigation
 ```
