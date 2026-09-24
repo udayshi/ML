@@ -1,8 +1,8 @@
-# Simple Linear Regression: Beginner Walkthrough
+# Simple Linear Regression: Jump-Start Guide
 
-This project is a small machine-learning example that trains a **simple linear regression** model. The model uses `ExperienceYears` to predict `Salary` from a CSV file.
+Simple linear regression uses one input feature to predict one target, making it a clear starting point for understanding the basic machine-learning workflow in this demo.
 
-The project demonstrates a complete beginner-friendly workflow:
+The project demonstrates a complete jump-start workflow:
 
 1. Install the Python dependencies.
 2. Generate a CSV dataset.
@@ -11,12 +11,13 @@ The project demonstrates a complete beginner-friendly workflow:
 5. Train a scikit-learn linear regression model.
 6. Compare real salaries with predicted salaries.
 
-## What you need
+## Install the packages
 
-Install:
+After initializing the uv project from the main [README](../README.md), install the packages used by this example:
 
-- Python 3.10 or newer
-- [uv](https://docs.astral.sh/uv/), a fast Python project and package manager
+```bash
+uv add scikit-learn numpy pandas matplotlib
+```
 
 The code uses these Python packages:
 
@@ -25,28 +26,13 @@ The code uses these Python packages:
 - `pandas` — reading and creating CSV data.
 - `matplotlib` — included by the regression script for plotting support, although this version does not currently display a plot.
 
-## 1. Create the project environment
-
-From this project directory, initialize a uv project and install the dependencies:
-
-```bash
-uv init
-uv add scikit-learn numpy pandas matplotlib
-```
-
-If `uv init` asks whether to overwrite an existing project file, keep the existing files and only add the dependencies. You can also install the packages into an existing environment with:
-
-```bash
-uv pip install scikit-learn numpy pandas matplotlib
-```
-
 Although the Python import is named `sklearn`, the package you install is named `scikit-learn`:
 
 ```python
 from sklearn.linear_model import LinearRegression
 ```
 
-## 2. Generate the CSV dataset
+## 1. Generate the CSV dataset
 
 Run the dataset generator:
 
@@ -54,7 +40,7 @@ Run the dataset generator:
 uv run dummy_csv.py
 ```
 
-This creates or replaces `data/salary.csv`. The file contains 100 rows with two columns:
+This creates `data/salary.csv` only if that file does not already exist. The file contains 100 rows with two columns:
 
 ```text
 ExperienceYears,Salary
@@ -62,9 +48,9 @@ ExperienceYears,Salary
 5,238854
 ```
 
-The values are randomly generated each time the script runs. Therefore, the exact rows and model results will change from run to run.
+The values are randomly generated when the file is first created. Running `dummy_csv.py` again preserves the existing file, so the rows and model results remain the same unless the CSV is replaced or regenerated.
 
-## 3. Run the linear regression example
+## 2. Run the linear regression example
 
 After creating the CSV file, run:
 
@@ -97,7 +83,7 @@ regressor.fit(X_train, y_train)
 
 Finally, it predicts the salaries in the test set and prints the real value, predicted value, difference, and model score.
 
-The output is not fixed because `dummy_csv.py` generates new random data. A typical output has this shape:
+The output depends on the contents of `data/salary.csv`. A typical output has this shape:
 
 ```text
 Index   Real    Predicted       Difference      Difference %
@@ -145,11 +131,11 @@ uv add pandas
 
 ### The regression script cannot find `data/salary.csv`
 
-Run `uv run dummy_csv.py` first, and run both commands from the project directory. The generator creates the `data/salary.csv` file expected by the regression script.
+Run `uv run dummy_csv.py` first, and run both commands from the project directory. The generator creates the `data/salary.csv` file when it is missing. If the file already exists, the generator leaves it unchanged.
 
-### Results change every time
+### Results change after regeneration
 
-That is expected because the dataset uses random values. To make experiments repeatable, add a seed before generating the random columns, for example:
+The initial dataset uses random values. If you delete or replace the CSV and generate it again, the results may change. To make newly generated experiments repeatable, add a seed before generating the random columns, for example:
 
 ```python
 np.random.seed(0)
@@ -161,7 +147,7 @@ np.random.seed(0)
 .
 ├── data/
 │   └── salary.csv                 # Generated input data
-├── dummy_csv.py                   # Creates the sample CSV
+├── dummy_csv.py                   # Creates the sample CSV when missing
 ├── simple-linear-regression.py    # Trains and evaluates the model
 └── README.md                      # This walkthrough
 ```
