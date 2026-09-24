@@ -5,9 +5,8 @@ import os
 
 
 
-def createSalary():
-    # Create a sample DataFrame for London Housing data
-    target_file:str='./data/salary.csv'
+def createSalary(target_file:str):
+
     if not os.path.exists(target_file):
         df = pd.DataFrame({
 
@@ -21,8 +20,8 @@ def createSalary():
         df.to_csv(target_file, index=False)
 
 
-def companyStartup():
-    target_file:str='./data/startup.csv'
+def companyStartup(target_file:str):
+
     if not os.path.exists(target_file):
         df = pd.DataFrame({
         'AdminExp': np.random.randint(200000, 500000, 100),
@@ -32,11 +31,11 @@ def companyStartup():
         'Profit': np.random.randint(200000, 500000, 100),
 
         })
-        df.to_csv('./data/startup.csv', index=False)
+        df.to_csv(target_file, index=False)
 
 
-def annModeling():
-    target_file:str='./data/ann.csv'
+def annModeling(target_file:str):
+
     if not os.path.exists(target_file):
         df = pd.DataFrame({
             'CreditScore': np.random.randint(100, 900, 100),
@@ -50,9 +49,9 @@ def annModeling():
             'isActiveMember': np.random.choice([0, 1], 100),
             'isActive': np.random.choice([0, 1], 100),
         })
-        df.to_csv('./data/ann.csv', index=False)
+        df.to_csv(target_file, index=False)
 
 
-createSalary()
-companyStartup()
-annModeling()
+createSalary('./data/salary.csv')
+companyStartup('./data/startup.csv')
+annModeling('./data/ann.csv')
