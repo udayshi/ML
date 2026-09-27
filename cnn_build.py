@@ -10,9 +10,9 @@ import tensorflow as tf  # type: ignore[import-untyped]
 
 # Settings
 # Image height in pixels.
-IMAGE_HEIGHT = 128
+IMAGE_HEIGHT = 64
 # Image width in pixels.
-IMAGE_WIDTH = 128
+IMAGE_WIDTH = 64
 IMAGE_CHANNELS = 1  # Grayscale uses one brightness channel instead of RGB's three.
 # Number of images processed together.
 BATCH_SIZE = 32

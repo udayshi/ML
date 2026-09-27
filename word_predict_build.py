@@ -19,7 +19,7 @@ TOKENIZER_PATH = Path("tokenizer.pkl")  # Saves the tokenizer used by predict.py
 EMBEDDING_SIZE = 10  # Represents each word with ten learned numeric features.
 LSTM_UNITS = 1000  # Uses one thousand memory units in each LSTM layer.
 HIDDEN_UNITS = 1000  # Uses one thousand neurons in the dense hidden layer.
-EPOCHS = 1000  # Repeats training over the corpus one thousand times.
+EPOCHS = 100  # Repeats training over the corpus one hundred times.
 BATCH_SIZE = 64  # Trains on sixty-four next-word examples at a time.
 
 

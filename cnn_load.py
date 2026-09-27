@@ -8,10 +8,10 @@ import numpy as np
 import tensorflow as tf  # type: ignore[import-untyped]
 
 # Settings
-IMAGE_HEIGHT = 128
-IMAGE_WIDTH = 128
+IMAGE_HEIGHT = 64
+IMAGE_WIDTH = 64
 MODEL_PATH = Path("models/cnn-demo.model")
-IMAGE_PATH = Path("datasets/single_prediction/d-1.jpg")
+IMAGE_PATH = Path("datasets/single_prediction/Cat/9.jpg")
 LABELS_PATH = MODEL_PATH / "labels.json"
 
 # Check the files needed for prediction.
